@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dgstemssasshi-jpg.github.io/scale-model-fab-portfolio/sitemap.xml
