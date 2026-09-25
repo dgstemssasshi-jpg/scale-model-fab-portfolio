@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>スケールモデル素材fab. | 1/12–1/24 カーモデルパーツ製作</title>
+<meta name="description" content="3Dプリンターによる1/12・1/18・1/24スケールのカーモデル用ホイール・エアロパーツ・キット製作。オーダーメイド製作承ります。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=Oswald:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#132a3f;
+    --ink-2:#1d3a56;
+    --paper:#eef1ec;
+    --paper-dim:#dfe4dc;
+    --line:#5c85a8;
+    --line-dim:rgba(92,133,168,.35);
+    --accent:#e8672c;
+    --graphite:#1a1f22;
+    --serif-num: 'Oswald', sans-serif;
+    --sans: 'Zen Kaku Gothic New', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--sans);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:1040px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  /* ruled margin ticks along the left of the whole page */
+  .ruler{
+    position:fixed;
+    top:0; bottom:0; left:0;
+    width:14px;
+    background-image:repeating-linear-gradient(
+      to bottom,
+      var(--line-dim) 0, var(--line-dim) 1px,
+      transparent 1px, transparent 40px
+    );
+    background-position:0 0;
+    pointer-events:none;
+    z-index:5;
+    opacity:.6;
+  }
+  .ruler::after{
+    content:"";
+    position:absolute; left:6px; top:0; bottom:0; width:1px;
+    background:var(--line-dim);
+  }
+
+  header.hero{
+    position:relative;
+    padding:120px 0 90px;
+    background:
+      linear-gradient(180deg, rgba(19,42,63,.15), var(--ink) 92%),
+      repeating-linear-gradient(0deg, var(--line-dim) 0 1px, transparent 1px 64px),
+      repeating-linear-gradient(90deg, var(--line-dim) 0 1px, transparent 1px 64px);
+    border-bottom:1px solid var(--line-dim);
+    overflow:hidden;
+  }
+  .eyebrow-num{
+    font-family:var(--serif-num);
+    font-size:13px;
+    letter-spacing:.14em;
+    color:var(--line);
+  }
+  h1.title{
+    font-family:var(--sans);
+    font-weight:900;
+    font-size:clamp(40px, 7vw, 76px);
+    margin:14px 0 20px;
+    letter-spacing:-.01em;
+    line-height:1.05;
+  }
+  .lede{
+    max-width:46ch;
+    font-size:18px;
+    color:#c9d6de;
+  }
+  .titleblock{
+    margin-top:56px;
+    border:1px solid var(--line);
+    background:rgba(19,42,63,.55);
+    max-width:560px;
+  }
+  .titleblock-row{
+    display:flex;
+    border-top:1px solid var(--line-dim);
+  }
+  .titleblock-row:first-child{border-top:none;}
+  .titleblock-cell{
+    flex:1;
+    padding:12px 18px;
+    border-left:1px solid var(--line-dim);
+  }
+  .titleblock-cell:first-child{border-left:none;}
+  .tb-label{
+    font-family:var(--serif-num);
+    font-size:11px;
+    letter-spacing:.1em;
+    color:var(--line);
+    margin-bottom:4px;
+  }
+  .tb-value{
+    font-size:17px;
+    font-weight:700;
+  }
+
+  section{
+    padding:88px 0;
+    border-bottom:1px solid var(--line-dim);
+  }
+  section.paper{
+    background:var(--paper);
+    color:var(--graphite);
+  }
+  section.paper h2, section.paper .num{color:var(--graphite);}
+  section.paper .eyebrow-num{color:#6a7a86;}
+
+  .num{
+    font-family:var(--serif-num);
+    color:var(--line);
+    font-size:15px;
+    letter-spacing:.08em;
+  }
+  h2{
+    font-size:clamp(28px, 4vw, 38px);
+    font-weight:900;
+    margin:10px 0 32px;
+    letter-spacing:-.01em;
+  }
+  .section-head{max-width:60ch;}
+  .section-head p{color:#7b8a94;}
+  section:not(.paper) .section-head p{color:#a9bac4;}
+
+  /* order flow — a genuine sequence, numbered */
+  .flow{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    margin-top:40px;
+    border:1px solid var(--line-dim);
+  }
+  .flow-step{
+    padding:24px 20px;
+    border-left:1px solid var(--line-dim);
+  }
+  .flow-step:first-child{border-left:none;}
+  .flow-step .step-num{
+    font-family:var(--serif-num);
+    font-size:28px;
+    color:var(--accent);
+  }
+  .flow-step h3{font-size:16px;margin:10px 0 6px;}
+  .flow-step p{font-size:14px;color:#8fa2ad;margin:0;}
+
+  .price-note{
+    margin-top:28px;
+    padding:18px 22px;
+    border-left:3px solid var(--accent);
+    background:rgba(232,103,44,.06);
+    font-size:15px;
+    max-width:60ch;
+  }
+
+  /* parts list style table for achievements */
+  table.parts{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:8px;
+    font-size:15px;
+  }
+  table.parts th{
+    text-align:left;
+    font-family:var(--serif-num);
+    font-weight:500;
+    font-size:12px;
+    letter-spacing:.08em;
+    color:#6a7a86;
+    padding:10px 14px;
+    border-bottom:1px solid #b9c2ba;
+  }
+  table.parts td{
+    padding:14px 14px;
+    border-bottom:1px solid #d3d9cf;
+    vertical-align:top;
+  }
+  table.parts tr:hover td{background:rgba(232,103,44,.05);}
+  .item-no{
+    font-family:var(--serif-num);
+    color:var(--accent);
+    width:52px;
+  }
+  .scale-tag{
+    display:inline-block;
+    font-family:var(--serif-num);
+    font-size:12px;
+    padding:2px 8px;
+    border:1px solid #6a7a86;
+    color:#4a5a66;
+    margin-right:8px;
+    white-space:nowrap;
+  }
+  .parts-note{margin-top:18px;font-size:14px;color:#5c6b76;}
+
+  /* category tags */
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;}
+  .tag{
+    border:1px solid var(--line);
+    padding:8px 16px;
+    font-size:14px;
+    color:var(--paper);
+  }
+
+  /* channel legend list */
+  .channels{margin-top:8px;border:1px solid var(--line-dim);}
+  .channel{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:20px;
+    padding:22px 24px;
+    border-top:1px solid var(--line-dim);
+    text-decoration:none;
+    transition:background .15s ease;
+  }
+  .channel:first-child{border-top:none;}
+  .channel:hover{background:rgba(232,103,44,.08);}
+  .channel-name{
+    font-size:19px;
+    font-weight:700;
+  }
+  .channel-desc{font-size:14px;color:#8fa2ad;margin-top:4px;}
+  .channel-arrow{
+    font-family:var(--serif-num);
+    color:var(--accent);
+    font-size:14px;
+    letter-spacing:.05em;
+    white-space:nowrap;
+    align-self:center;
+  }
+
+  footer{
+    padding:60px 0 80px;
+    text-align:left;
+  }
+  footer .cta{
+    font-size:clamp(26px,4vw,34px);
+    font-weight:900;
+    max-width:20ch;
+    margin:0 0 24px;
+  }
+  .btn{
+    display:inline-block;
+    background:var(--accent);
+    color:#141414;
+    font-weight:700;
+    padding:16px 30px;
+    text-decoration:none;
+    font-size:16px;
+  }
+  .btn:hover{background:#f5793f;}
+  footer .meta{
+    margin-top:56px;
+    font-size:13px;
+    color:#6a7d89;
+    font-family:var(--serif-num);
+    letter-spacing:.04em;
+  }
+
+  @media (max-width:720px){
+    .flow{grid-template-columns:1fr;}
+    .flow-step{border-left:none;border-top:1px solid var(--line-dim);}
+    .flow-step:first-child{border-top:none;}
+    .titleblock-row{flex-direction:column;}
+    .titleblock-cell{border-left:none;border-top:1px solid var(--line-dim);}
+    .titleblock-row:first-child .titleblock-cell:first-child{border-top:none;}
+    .channel{flex-direction:column;align-items:flex-start;gap:6px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+  }
+</style>
+</head>
+<body>
+<div class="ruler" aria-hidden="true"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow-num">SCALE MODEL MATERIAL FAB. — 1/12&nbsp;·&nbsp;1/18&nbsp;·&nbsp;1/24</div>
+    <h1 class="title">スケールモデル<br>素材fab.</h1>
+    <p class="lede">3Dプリンターでカーモデル用のホイール・エアロパーツ・カーモデルキットを一つひとつ製作しています。市販キットでは手に入らないパーツも、オーダーメイドで形にします。</p>
+
+    <div class="titleblock">
+      <div class="titleblock-row">
+        <div class="titleblock-cell">
+          <div class="tb-label">YAHOO!オークション評価</div>
+          <div class="tb-value">341</div>
+        </div>
+        <div class="titleblock-cell">
+          <div class="tb-label">メルカリ評価</div>
+          <div class="tb-value">244</div>
+        </div>
+      </div>
+      <div class="titleblock-row">
+        <div class="titleblock-cell">
+          <div class="tb-label">対応スケール</div>
+          <div class="tb-value">1/12・1/18・1/24</div>
+        </div>
+        <div class="titleblock-cell">
+          <div class="tb-label">販売チャネル</div>
+          <div class="tb-value">5チャネル展開</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="order">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">01 — ORDER MADE</div>
+      <h2>オーダーメイド製作承ります</h2>
+      <p>市販カーモデルキット対応のオリジナルホイール・エアロパーツ製作から、お手持ちのキットに合わせたカスタムパーツの一点製作、複数パーツのまとめ製作まで。図面が無いパーツも、参考画像から設計します。</p>
+    </div>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="step-num">01</div>
+        <h3>お問い合わせ</h3>
+        <p>車種・スケール・参考画像などをお送りください。</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">02</div>
+        <h3>ヒアリング・お見積り</h3>
+        <p>製作可否と価格・納期の目安をご案内します。</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">03</div>
+        <h3>製作</h3>
+        <p>ご了承後、設計・出力を開始します。</p>
+      </div>
+      <div class="flow-step">
+        <div class="step-num">04</div>
+        <h3>納品</h3>
+        <p>完成後、発送いたします。</p>
+      </div>
+    </div>
+
+    <div class="price-note">
+      価格の目安：単一パーツで数千円〜。複数パーツのセットやカーモデルキット一式などまとまったご依頼は、数万円規模まで対応した実績があります。
+    </div>
+  </div>
+</section>
+
+<section class="paper" id="works">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">02 — PRODUCTION LIST</div>
+      <h2>製作実績(カーモデルキット)</h2>
+      <p>オーダーメイドで一式製作したカーモデルキットの一例です。</p>
+    </div>
+
+    <table class="parts">
+      <thead>
+        <tr><th>No.</th><th>スケール</th><th>仕様</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="item-no">01</td><td><span class="scale-tag">1/18</span></td><td>1973年製 国内軽自動車モデルキット</td></tr>
+        <tr><td class="item-no">02</td><td><span class="scale-tag">1/24</span></td><td>1977年製 国内セダン自動車モデルキット</td></tr>
+        <tr><td class="item-no">03</td><td><span class="scale-tag">1/24</span></td><td>1977年製 国内軽ワゴン車モデルキット</td></tr>
+        <tr><td class="item-no">04</td><td><span class="scale-tag">1/24</span></td><td>1989年製 国内セダン自動車モデルキット</td></tr>
+        <tr><td class="item-no">05</td><td><span class="scale-tag">1/24</span></td><td>1973年製 国内セダン自動車モデルキット(ハードトップ＆4ドア)</td></tr>
+        <tr><td class="item-no">06</td><td><span class="scale-tag">1/18</span><span class="scale-tag">1/24</span></td><td>2009年製 国内軽自動車モデルキット</td></tr>
+        <tr><td class="item-no">07</td><td><span class="scale-tag">1/18</span></td><td>2023年製 国内TCR車両モデルキット(デカール製作含む)</td></tr>
+        <tr><td class="item-no">08</td><td><span class="scale-tag">1/18</span></td><td>2020年製 海外ワンメイクレース車両モデルキット(デカール製作含む)</td></tr>
+      </tbody>
+    </table>
+    <p class="parts-note">※上記のほか、ホイール・タイヤ・エアロパーツ等の単体パーツ製作も多数承っております。</p>
+
+    <div class="section-head" style="margin-top:64px;">
+      <div class="num">03 — CATEGORIES</div>
+      <h2>取り扱いジャンル</h2>
+    </div>
+    <div class="tags" style="margin-top:0;">
+      <span class="tag" style="border-color:#6a7a86;color:var(--graphite);">ホイール＆タイヤセット</span>
+      <span class="tag" style="border-color:#6a7a86;color:var(--graphite);">エアロパーツ／エアロキット</span>
+      <span class="tag" style="border-color:#6a7a86;color:var(--graphite);">カーモデルキット一式</span>
+      <span class="tag" style="border-color:#6a7a86;color:var(--graphite);">ガレージアクセサリー(ジャッキ・工具箱等)</span>
+      <span class="tag" style="border-color:#6a7a86;color:var(--graphite);">ヘルメット・レーシングギア</span>
+      <span class="tag" style="border-color:#6a7a86;color:var(--graphite);">ジオラマ用ディテールパーツ</span>
+    </div>
+  </div>
+</section>
+
+<section id="channels">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="num">04 — WHERE TO FIND US</div>
+      <h2>販売チャネル</h2>
+      <p>国内5サイトで展開しています。海外向けにはCults3Dで3Dデータ(STL)を配信しています。</p>
+    </div>
+
+    <div class="channels">
+      <a class="channel" href="https://auctions.yahoo.co.jp/seller/dgstems" target="_blank" rel="noopener">
+        <div>
+          <div class="channel-name">Yahoo!オークション</div>
+          <div class="channel-desc">評価341。最も取り扱い実績の多いチャネルです。</div>
+        </div>
+        <div class="channel-arrow">VISIT →</div>
+      </a>
+      <a class="channel" href="https://dgstemssasshi.stores.jp" target="_blank" rel="noopener">
+        <div>
+          <div class="channel-name">STORES</div>
+          <div class="channel-desc">自社ネットショップ。カーモデルキット一式も取り扱い。</div>
+        </div>
+        <div class="channel-arrow">VISIT →</div>
+      </a>
+      <a class="channel" href="https://www.mercari.com/jp/u/934578773/" target="_blank" rel="noopener">
+        <div>
+          <div class="channel-name">メルカリ</div>
+          <div class="channel-desc">評価244。単品パーツを中心に出品しています。</div>
+        </div>
+        <div class="channel-arrow">VISIT →</div>
+      </a>
+      <a class="channel" href="https://fril.jp/shop/e6eb61098fd20e5761ceef71f13e3b90" target="_blank" rel="noopener">
+        <div>
+          <div class="channel-name">ラクマ</div>
+          <div class="channel-desc">メルカリと並行して出品しています。</div>
+        </div>
+        <div class="channel-arrow">VISIT →</div>
+      </a>
+      <a class="channel" href="https://cults3d.com/en/users/SMMFab" target="_blank" rel="noopener">
+        <div>
+          <div class="channel-name">Cults3D</div>
+          <div class="channel-desc">海外向けに3Dデータ(STL)を配信。</div>
+        </div>
+        <div class="channel-arrow">VISIT →</div>
+      </a>
+      <a class="channel" href="https://lmaterialfab.booth.pm/" target="_blank" rel="noopener">
+        <div>
+          <div class="channel-name">BOOTH</div>
+          <div class="channel-desc">3Dデータ(STL)を国内向けに配信。</div>
+        </div>
+        <div class="channel-arrow">VISIT →</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="num">05 — CONTACT</div>
+    <p class="cta">オーダーメイド製作のご相談はお気軽に</p>
+    <a class="btn" href="https://dgstemssasshi.stores.jp" target="_blank" rel="noopener">STORESから問い合わせる</a>
+    <div class="meta">SCALE MODEL MATERIAL FAB. — MADE IN 1/12・1/18・1/24</div>
+  </div>
+</footer>
+
+</body>
+</html>
