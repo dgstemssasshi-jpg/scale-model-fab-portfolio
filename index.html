@@ -68,6 +68,37 @@
     border-bottom:1px solid var(--line-dim);
     overflow:hidden;
   }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:56px;
+    align-items:start;
+  }
+  .hero-photo{
+    position:relative;
+    border:1px solid var(--line);
+    background:rgba(19,42,63,.4);
+    padding:10px;
+    margin-top:8px;
+  }
+  .hero-photo img{
+    display:block;
+    width:100%;
+    height:auto;
+    filter:grayscale(.15) contrast(1.03);
+  }
+  .hero-photo .cap{
+    display:flex;
+    justify-content:space-between;
+    font-family:var(--serif-num);
+    font-size:11px;
+    letter-spacing:.08em;
+    color:var(--line);
+    padding:8px 2px 0;
+  }
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;}
+  }
   .eyebrow-num{
     font-family:var(--serif-num);
     font-size:13px;
@@ -222,6 +253,42 @@
     color:var(--paper);
   }
 
+  /* photo gallery */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2px;
+    margin-top:8px;
+    background:#b9c2ba;
+  }
+  .gallery-item{
+    background:var(--paper);
+    display:flex;
+    flex-direction:column;
+  }
+  .gallery-item img{
+    display:block;
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+  }
+  .gallery-cap{
+    padding:10px 12px;
+    font-size:12.5px;
+    color:#5c6b76;
+    border-top:1px solid #d3d9cf;
+  }
+  .gallery-cap b{
+    display:block;
+    color:var(--graphite);
+    font-size:13.5px;
+    font-weight:700;
+    margin-bottom:2px;
+  }
+  @media (max-width:720px){
+    .gallery{grid-template-columns:repeat(2,1fr);}
+  }
+
   /* channel legend list */
   .channels{margin-top:8px;border:1px solid var(--line-dim);}
   .channel{
@@ -297,30 +364,39 @@
 
 <header class="hero">
   <div class="wrap">
-    <div class="eyebrow-num">SCALE MODEL MATERIAL FAB. — 1/12&nbsp;·&nbsp;1/18&nbsp;·&nbsp;1/24</div>
-    <h1 class="title">スケールモデル<br>素材fab.</h1>
-    <p class="lede">3Dプリンターでカーモデル用のホイール・エアロパーツ・カーモデルキットを一つひとつ製作しています。市販キットでは手に入らないパーツも、オーダーメイドで形にします。</p>
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow-num">SCALE MODEL MATERIAL FAB. — 1/12&nbsp;·&nbsp;1/18&nbsp;·&nbsp;1/24</div>
+        <h1 class="title">スケールモデル<br>素材fab.</h1>
+        <p class="lede">3Dプリンターでカーモデル用のホイール・エアロパーツ・カーモデルキットを一つひとつ製作しています。市販キットでは手に入らないパーツも、オーダーメイドで形にします。</p>
 
-    <div class="titleblock">
-      <div class="titleblock-row">
-        <div class="titleblock-cell">
-          <div class="tb-label">YAHOO!オークション評価</div>
-          <div class="tb-value">341</div>
-        </div>
-        <div class="titleblock-cell">
-          <div class="tb-label">メルカリ評価</div>
-          <div class="tb-value">244</div>
+        <div class="titleblock">
+          <div class="titleblock-row">
+            <div class="titleblock-cell">
+              <div class="tb-label">YAHOO!オークション評価</div>
+              <div class="tb-value">341</div>
+            </div>
+            <div class="titleblock-cell">
+              <div class="tb-label">メルカリ評価</div>
+              <div class="tb-value">244</div>
+            </div>
+          </div>
+          <div class="titleblock-row">
+            <div class="titleblock-cell">
+              <div class="tb-label">対応スケール</div>
+              <div class="tb-value">1/12・1/18・1/24</div>
+            </div>
+            <div class="titleblock-cell">
+              <div class="tb-label">販売チャネル</div>
+              <div class="tb-value">5チャネル展開</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="titleblock-row">
-        <div class="titleblock-cell">
-          <div class="tb-label">対応スケール</div>
-          <div class="tb-value">1/12・1/18・1/24</div>
-        </div>
-        <div class="titleblock-cell">
-          <div class="tb-label">販売チャネル</div>
-          <div class="tb-value">5チャネル展開</div>
-        </div>
+
+      <div class="hero-photo">
+        <img src="hero-bodies.jpg" alt="出力したカーモデル用ボディパーツ（未塗装）" loading="eager">
+        <div class="cap"><span>FIG. 01</span><span>UNPAINTED BODY OUTPUT</span></div>
       </div>
     </div>
   </div>
@@ -400,13 +476,48 @@
       <span class="tag" style="border-color:#6a7a86;color:var(--graphite);">ヘルメット・レーシングギア</span>
       <span class="tag" style="border-color:#6a7a86;color:var(--graphite);">ジオラマ用ディテールパーツ</span>
     </div>
+
+    <div class="section-head" style="margin-top:64px;">
+      <div class="num">04 — GALLERY</div>
+      <h2>製作サンプル</h2>
+    </div>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="van.jpg" alt="1/24スケール 国内軽ワゴン車モデルキット" loading="lazy">
+        <div class="gallery-cap"><b>軽ワゴン車キット</b>1/24スケール・国内軽ワゴン車モデルキット</div>
+      </div>
+      <div class="gallery-item">
+        <img src="sedan-yellow.jpg" alt="1/24スケール 国内セダン自動車モデルキット" loading="lazy">
+        <div class="gallery-cap"><b>セダンキット</b>1/24スケール・国内セダン自動車モデルキット</div>
+      </div>
+      <div class="gallery-item">
+        <img src="kei-blue.jpg" alt="1/18スケール 国内軽自動車モデルキット" loading="lazy">
+        <div class="gallery-cap"><b>軽自動車キット</b>1/18スケール・国内軽自動車モデルキット</div>
+      </div>
+      <div class="gallery-item">
+        <img src="wing-detail.jpg" alt="1/18スケール GTウイング取り付け" loading="lazy">
+        <div class="gallery-cap"><b>GTウイング</b>1/18スケール・エアロパーツ取り付け例</div>
+      </div>
+      <div class="gallery-item">
+        <img src="sedan-built.jpg" alt="製作例 セダンモデル完成写真" loading="lazy">
+        <div class="gallery-cap"><b>完成写真</b>オーダーメイド製作例</div>
+      </div>
+      <div class="gallery-item">
+        <img src="hero-bodies.jpg" alt="出力したボディパーツ未塗装" loading="lazy">
+        <div class="gallery-cap"><b>出力サンプル</b>未塗装ボディパーツ(3Dプリント直後)</div>
+      </div>
+      <div class="gallery-item">
+        <img src="chair-set.jpg" alt="1/24スケール 椅子セット" loading="lazy">
+        <div class="gallery-cap"><b>チェアセット</b>1/24スケール・オフィスチェア他4点セット</div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="channels">
   <div class="wrap">
     <div class="section-head">
-      <div class="num">04 — WHERE TO FIND US</div>
+      <div class="num">05 — WHERE TO FIND US</div>
       <h2>販売チャネル</h2>
       <p>国内5サイトで展開しています。海外向けにはCults3Dで3Dデータ(STL)を配信しています。</p>
     </div>
@@ -460,7 +571,7 @@
 
 <footer>
   <div class="wrap">
-    <div class="num">05 — CONTACT</div>
+    <div class="num">06 — CONTACT</div>
     <p class="cta">オーダーメイド製作のご相談はお気軽に</p>
     <a class="btn" href="https://dgstemssasshi.stores.jp" target="_blank" rel="noopener">STORESから問い合わせる</a>
     <div class="meta">SCALE MODEL MATERIAL FAB. — MADE IN 1/12・1/18・1/24</div>
